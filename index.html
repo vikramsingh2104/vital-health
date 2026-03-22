@@ -1028,9 +1028,7 @@ async function analyzeFood() {
       ]}]
     });
 
-    // Route through proxy to avoid CORS block in published apps
-    const proxyUrl = 'https://corsproxy.io/?url=' + encodeURIComponent('https://api.anthropic.com/v1/messages');
-    const resp = await fetch(proxyUrl, {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1283,7 +1281,7 @@ async function generateInsights() {
 - Weight: ${weightLog[0]?.val||'Not logged'} lbs`;
 
   try {
-    const resp = await fetch('https://corsproxy.io/?url=' + encodeURIComponent('https://api.anthropic.com/v1/messages'),{
+    const resp = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
